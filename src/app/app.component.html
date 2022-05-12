@@ -3,13 +3,13 @@
     <a [routerLink]="['/']">Weather</a>
   </h1>
   <ul>
-    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-      <a [routerLink]="['/']">Home</a>
-    </li>
-    <li routerLinkActive="active"><a routerLink="/posts">Posts</a></li>
-    <li routerLinkActive="active"><a [routerLink]="['/about']">About</a></li>
+    <li> <a>Home</a> </li>
+    <li> <a>News</a> </li>
+    <li> <a>Weather</a> </li>
     <li><button class="btn">Login</button></li>
     <li><button class="btn">Logout</button></li>
   </ul>
 </nav>
-
+<div>
+<app-main></app-main>
+</div>
