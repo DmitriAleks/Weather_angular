@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpModule } from '../services/httpt.service';
 
 @Component({
   selector: 'app-main',
@@ -8,13 +9,23 @@ import { Component, OnInit } from '@angular/core';
 export class MainComponent implements OnInit {
 
   searchCityName = ''
+  lon = ''
+  lan =''
 
-  constructor() { }
+  constructor(private httpRequest: HttpModule ) { }
 
   ngOnInit(): void {
   }
   onSeacrh(){
-    console.log(this.searchCityName)
+    this.httpRequest.getCoordinatesByLocationName(this.searchCityName).subscribe(response =>{
+      // this.lan=response.lan
+      // this.lon = response.lon
+      console.log(response);
+
+
+      
+    })
+  
   }
 
 }
