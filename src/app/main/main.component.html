@@ -1,10 +1,33 @@
+
 <div class="main">
-    <div class="content">
-<h1>Главный экран</h1>
+  <div class="content" [ngSwitch]="status">
+    <div class="content__success" *ngSwitchCase="'success'">
+      <h1>Главный экран</h1>
+      <span><p>Текущая температура в городе {{city}} </p> {{currentTemp}}</span>
     </div>
-    <div class="controlBlock">
-<h1>Настройки</h1>
-<label>Введите название города<input type="text" [(ngModel)]="searchCityName"></label>
-<button class="btn" (click)="onSeacrh()">click</button>
+
+    <div class="content__loader" *ngSwitchCase="'loader'">
+      <ng-container *ngTemplateOutlet="loader"></ng-container>
     </div>
+
+    <div class="content__error" *ngSwitchCase="'error'">
+      <h1>Упс...</h1>
+    </div>
+
+    <div class="content__intro" *ngSwitchDefault>
+      <h1>Intro</h1>
+    </div>
+
+  </div>
+  <div class="controlBlock">
+    <h1>Настройки</h1>
+    <label>Введите название города<input type="text" [(ngModel)]="searchCityName" (keydown.enter)="onSearch()"></label>
+    <button class="btn" (click)="onSearch()">click</button>
+  </div>
 </div>
+
+
+
+<ng-template #loader>
+  <h1> Загрузка....</h1>
+</ng-template>
